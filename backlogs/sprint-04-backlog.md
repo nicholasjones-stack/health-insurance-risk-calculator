@@ -6,13 +6,13 @@ permalink: /backlogs/sprint-04-backlog/
 
 # 📋 Sprint 04 Backlog – *Insurance Risk Calculator*
 
-Scrum Master: Eric Pogue
+Scrum Master: Nicholas 
 
-Product Owner: Eric Pogue
+Product Owner: Ryan
 
-Sprint 4 Planning Date/Time:
+Sprint 4 Planning Date/Time: 3/12/26
 
-Sprint 4 Planning Participants: Eric Pogue, Tessy, and Edward Scissorhands (remotely)
+Sprint 4 Planning Participants: Juno, Ryan, Nicholas
 
 Sprint 4 Backlog:
 
@@ -30,8 +30,3 @@ Sprint 4 Backlog:
 | RC-020 | As a developer, I want to verify that all tasks in sprint 4 work together properly. | 7 | 1 | N/Y | -- | Ryan |
 | RC-011 | As a developer, I want to implement the risk calculation API using Node.js so that I can encapsulate the core business logic on the server side. | 7 | 6 | Y | -- | Fawz |
 | RC-012 | As a developer, I want to write at least one Node.js API and commit to GitHub so that I can contribute to server-side functionality and maintain traceable commits. (one story per team member) | 7 | 3 | Y | -- | Fawz |
-
-Todo:
-1. Team members request the highest priority stories (required for MVP) 
-2. These high-priority stories are assigned to the team member and **moved** from the Product Backlog to the Sprint 4 Backlog 
-3. Team commits to Sprint 4 Backlog
