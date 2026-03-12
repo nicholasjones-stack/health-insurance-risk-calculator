@@ -30,3 +30,4 @@ Sprint 4 Backlog:
 | RC-020 | As a developer, I want to verify that all tasks in sprint 4 work together properly. | 7 | 1 | N/Y | -- | Ryan |
 | RC-011 | As a developer, I want to implement the risk calculation API using Node.js so that I can encapsulate the core business logic on the server side. | 7 | 6 | Y | -- | Fawz |
 | RC-012 | As a developer, I want to write at least one Node.js API and commit to GitHub so that I can contribute to server-side functionality and maintain traceable commits. (one story per team member) | 7 | 3 | Y | -- | Fawz |
+| RC-014 | As a Product Owner, I want to ensure that no calculations occur on the client so that I can maintain centralized and consistent calculation logic. | 7 | 1 | Y | -- | Ryan |
