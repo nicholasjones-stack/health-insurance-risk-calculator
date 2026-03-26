@@ -1,77 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Team</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 20px 0;
-    }
-    main {
-      padding: 20px;
-    }
-    .team-photo {
-      width: 80%;
-      max-width: 600px;
-      margin: 20px auto;
-      display: block;
-      border: 3px solid #ccc;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 10px 0;
-    }
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    section {
-      margin-top: 40px;
-    }
-  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MERNa Web</title>
+	<style>
+		#urlInput {
+            width: 500px; 
+            padding: 10px;
+            font-size: 14px;
+        }
+        #favoritePlacesJSON, #batmanJSON {
+            padding: 20px;
+            background-color: lightgray;
+            margin-top: 20px;
+        }
+		#testingDiv {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h2>*** Your team should replace this entirely with something uniquely your own ***</h2>
-    <h1>Welcome to Our Starter Scrum Team Page</h1>
-    <h2>Generate by ChatGPT (with a little help from Eric)</h2>
-  </header>
-  <main>
-    <h2>Meet the Team</h2>
-    <!-- Replace with your own image and map coordinates -->
-    <img src="team-photo.jpg" usemap="#teammap" alt="Team Photo" class="team-photo">
+	<h1>Health Insurance Risk Calculator</h1>
+	
 
-    <map name="teammap">
-      <area shape="rect" coords="49,50,150,150" href="https://github.com/EricJPogue" alt="Eric Pogue">
-      <area shape="rect" coords="160,50,260,150" href="member2.html" alt="Member 2">
-      <!-- Add more areas per team member -->
-    </map>
+	<label for="urlInput">Server test:</label><br />
 
-    <ul>
-      <li><a href="https://github.com/EricJPogue">Eric Pogue (epogue@lewisu.edu)</a></li>
-      <li><a href="member2.html">Member 2</a></li>
-      <!-- Add more team members -->
-    </ul>
+	<button onclick="testServerConnection()">Test Server Connection</button>
+	<div id="ping"></div><br /><br />
+	<div id="testingDiv">
+	<script>
+		async function testServerConnection() {
+			const pingField = document.getElementById("ping");
+			pingField.innerHTML = "";
+			var div = document.getElementById('testingDiv');
+			div.style.display = 'none';
 
-    <section id="repository-and-backlogs">
-      <p>[[team-name-in-camel-case]]GitHub Repository: <a href="#">[[team-github-repository-url]]</a></p>
-    </section>
-  </main>
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/test"
+			const response = await fetch(url);
+			const pingResponse = await response.text();
+
+			if (pingResponse === 'This is the test response.') {
+				pingField.innerHTML = "Success!";
+				var div = document.getElementById('testingDiv');
+				div.style.display = 'block';
+			} 
+		}
+	</script>
+
+	</div>
 </body>
 </html>
