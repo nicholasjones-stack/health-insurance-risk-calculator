@@ -21,13 +21,7 @@
 </head>
 <body>
 	<h1>Health Insurance Risk Calculator</h1>
-	
 
-	<label for="urlInput">Server test:</label><br />
-
-	<button onclick="testServerConnection()">Test Server Connection</button>
-	<div id="ping"></div><br /><br />
-	<div id="testingDiv">
 
 
 	<select id="systolic">
@@ -83,31 +77,16 @@
 	<button type="button" onclick="calculateRisk()">Calculate Risk</button>
 	<div id="risk"></div>
 	
+	
 
 	<script>
-		async function testServerConnection() {
-			const pingField = document.getElementById("ping");
-			pingField.innerHTML = "";
-			var div = document.getElementById('testingDiv');
-			div.style.display = 'none';
-
-			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/test"
-			const response = await fetch(url);
-			const pingResponse = await response.text();
-
-			if (pingResponse === 'This is the test response.') {
-				pingField.innerHTML = "Success!";
-				var div = document.getElementById('testingDiv');
-				div.style.display = 'block';
-			} 
-		}
 
 		async function calculateBMI(){
 			const weight = document.getElementById("weight").value
 			const feet = document.getElementById("feet").value
 			const inches = document.getElementById("inches").value
 
-			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/"
 			const fetchString = url+"/calculate-bmi?feet="+feet+"&inches="+inches+"&weight="+weight
 			const response = await fetch(fetchString)
 			const responseText = await response.text()
@@ -140,8 +119,9 @@
 				d = 3
 			else if (diastolic == ">120")
 				d = 4
+			
 
-			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/"
 			const fetchString = url+"/calculate-bp?systolic="+s+"&diastolic="+d
 			const response = await fetch(fetchString)
 			const responseText = await response.text()
@@ -152,11 +132,12 @@
 		async function calculateRisk(){
 
 			const age = document.getElementById("age").value
-			const diabetes = document.getElementById("diabetes").value
-			const alzheimer = document.getElementById("alzheimer").value
-			const cancer = document.getElementById("cancer").value
+			const diabetes = document.getElementById("diabetes").checked
+			const alzheimer = document.getElementById("alzheimer").checked
+			const cancer = document.getElementById("cancer").checked
 			const bmiCategory = document.getElementById("bmiCategory").value
 			const bpCategory = document.getElementById("category").value
+			console.log(age + " " + diabetes + " " + alzheimer + " " + cancer + " " + bmiCategory + " " + bpCategory)
 
 			let history = 0
 			if (diabetes)
@@ -167,30 +148,47 @@
 				history += 1
 
 			let bmi = 0
-			if (bmi == "obese")
+			if (bmiCategory == "obese")
 				bmi = 2
-			else if (bmi == "overweight")
+			else if (bmiCategory == "overweight")
 				bmi = 1
 			else
 				bmi = 0
 
 			let bp = 0
-			if (bp == "crisis")
+			if (bpCategory == "crisis")
 				bp = 4
-			else if (bp == "stage2")
+			else if (bpCategory == "stage2")
 				bp = 3
-			else if (bp == "stage1")
+			else if (bpCategory == "stage1")
 				bp = 2
-			else if (bp == "elevated")
+			else if (bpCategory == "elevated")
 				bp = 1
 			else
 				bp = 0
 
-			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/"
 			const fetchString = url+"/risk-category?age="+age+"&disease="+history+"&bmi="+bmi+"&bp="+bp
 			const response = await fetch(fetchString)
 			const responseText = await response.text()
 			document.getElementById("risk").value = responseText
+		}
+
+		async function testServerConnection() {
+			const pingField = document.getElementById("ping");
+			pingField.innerHTML = "";
+			var div = document.getElementById('testingDiv');
+			div.style.display = 'none';
+
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net/test"
+			const response = await fetch(url);
+			const pingResponse = await response.text();
+
+			if (pingResponse === 'This is the test response.') {
+				pingField.innerHTML = "Success!";
+				var div = document.getElementById('testingDiv');
+				div.style.display = 'block';
+			} 
 		}
 
 	</script>
